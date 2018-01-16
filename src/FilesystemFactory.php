@@ -6,6 +6,8 @@ use Aws\S3\S3Client;
 
 use League\Flysystem\AwsS3v3\AwsS3Adapter;
 use League\Flysystem\Adapter\Local as LocalAdapter;
+use yii\di\Container;
+use yii\web\UrlManager;
 
 /**
  * Class FilesystemFactory
@@ -13,7 +15,13 @@ use League\Flysystem\Adapter\Local as LocalAdapter;
  */
 class FilesystemFactory
 {
-    public static function instantiate()
+    /**
+     * @param Container $container
+     * @return Filesystem
+     * @throws \yii\base\InvalidConfigException
+     * @throws \yii\di\NotInstantiableException
+     */
+    public static function instantiate(Container $container)
     {
         if ($endpoint = getenv('S3_ENDPOINT')) {
             $client = new S3Client([
@@ -29,7 +37,10 @@ class FilesystemFactory
             $baseUrl = getenv('S3_BASE_URL');
         } else {
             $adapter = new LocalAdapter(\Yii::getAlias('@fileStorage'));
-            $baseUrl = \Yii::$app->urlManager->createUrl('/');
+            
+            /** @var UrlManager $manager */
+            $manager = $container->get(UrlManager::class);
+            $baseUrl = $manager->createUrl('/');
         }
 
         return new Filesystem($adapter, $baseUrl);
