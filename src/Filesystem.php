@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Wearesho\Yii\Filesystem;
 
 use League\Flysystem\AdapterInterface;
