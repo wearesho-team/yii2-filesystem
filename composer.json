@@ -3,7 +3,7 @@
   "description": "Yii2 integration for league/flysystem",
   "type": "library",
   "require": {
-    "php": ">=7.1",
+    "php": ">=7.0",
     "league/flysystem": "^1.0",
     "yiisoft/yii2": "2.0.13.1",
     "league/flysystem-aws-s3-v3": "^1.0"
