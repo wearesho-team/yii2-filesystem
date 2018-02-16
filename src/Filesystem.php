@@ -23,6 +23,6 @@ class Filesystem extends Flysystem
 
     public function getUrl(string $path): string
     {
-        return $this->baseUrl . '/' . ltrim($path, '/');
+        return rtrim($this->baseUrl, '/') . '/' . ltrim($path, '/');
     }
 }
