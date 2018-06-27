@@ -2,26 +2,23 @@
 
 namespace Wearesho\Yii\Filesystem;
 
-use League\Flysystem\AdapterInterface;
-use League\Flysystem\Filesystem as Flysystem;
+use League\Flysystem;
 
 /**
  * Class Filesystem
- * @package common\components
+ * @package Wearesho\Yii\Filesystem
+ *
+ * @property-read AdapterInterface $adapter
  */
-class Filesystem extends Flysystem
+class Filesystem extends Flysystem\Filesystem
 {
-    /** @var string */
-    protected $baseUrl;
-
-    public function __construct(AdapterInterface $adapter, string $baseUrl, $config = null)
+    public function __construct(AdapterInterface $adapter, $config = null)
     {
         parent::__construct($adapter, $config);
-        $this->baseUrl = $baseUrl;
     }
 
     public function getUrl(string $path): string
     {
-        return rtrim($this->baseUrl, '/') . '/' . ltrim($path, '/');
+        return rtrim($this->adapter->getBaseUrl(), '/') . '/' . ltrim($path, '/');
     }
 }
