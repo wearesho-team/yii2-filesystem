@@ -22,7 +22,7 @@ class EnvironmentConfig extends Environment\Yii2\Config implements ConfigInterfa
         return $this->getEnv('USER');
     }
 
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         // key and method name different because of backward-compatibility for SHO Art & Data
         return $this->getEnv('PASS', [$this, 'null']);

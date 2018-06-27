@@ -12,7 +12,7 @@ interface ConfigInterface
 
     public function getUser(): string;
 
-    public function getPassword(): string;
+    public function getPassword(): ?string;
 
     public function getPort(): int;
 
