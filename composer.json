@@ -14,7 +14,7 @@
       "Wearesho\\Yii\\Filesystem\\": "src/"
     }
   },
-  "license": "proprietary",
+  "license": "MIT",
   "authors": [
     {
       "name": "Alexander Letnikow",
