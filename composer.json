@@ -1,12 +1,13 @@
 {
-  "name": "wearesho-team/yii-filesystem",
+  "name": "wearesho-team/yii2-filesystem",
   "description": "Yii2 integration for league/flysystem",
   "type": "library",
   "require": {
-    "php": ">=7.0",
+    "php": ">=7.1",
     "league/flysystem": "^1.0",
-    "yiisoft/yii2": ">=2.0.7",
-    "league/flysystem-aws-s3-v3": "^1.0"
+    "yiisoft/yii2": "^2.0",
+    "league/flysystem-aws-s3-v3": "^1.0",
+    "horat1us/yii2-environment-config": "^1.0"
   },
   "autoload": {
     "psr-4": {
