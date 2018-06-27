@@ -67,7 +67,9 @@ class Bootstrap extends base\BaseObject implements base\BootstrapInterface
     public function bootstrap($app): void
     {
         if (!is_null($this->id)) {
-            $app->set($this->id, $this->getAdapterReference());
+            /** @var AdapterInterface $adapter */
+            $adapter = di\Instance::ensure($this->getAdapterReference(), AdapterInterface::class);
+            $app->set($this->id, new Filesystem($adapter));
         }
 
         if ($this->container === true) {
