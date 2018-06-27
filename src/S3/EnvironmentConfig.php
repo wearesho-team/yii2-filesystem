@@ -29,7 +29,7 @@ class EnvironmentConfig extends Environment\Yii2\Config implements ConfigInterfa
 
     public function getVersion(): string
     {
-        return $this->getEnv('VERSION');
+        return $this->getEnv('VERSION', 'latest');
     }
 
     public function getRegion(): string
