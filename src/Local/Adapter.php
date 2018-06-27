@@ -11,7 +11,7 @@ use League\Flysystem;
  * Class Adapter
  * @package Wearesho\Yii\Filesystem\Local
  */
-class AdapterInterface extends Flysystem\Adapter\Local implements Filesystem\AdapterInterface, base\Configurable
+class Adapter extends Flysystem\Adapter\Local implements Filesystem\AdapterInterface, base\Configurable
 {
     /** @var array|string|ConfigInterface definition */
     public $config = [

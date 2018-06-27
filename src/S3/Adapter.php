@@ -12,7 +12,7 @@ use Wearesho\Yii\Filesystem;
  * Class Adapter
  * @package Wearesho\Yii\Filesystem\S3
  */
-class AdapterInterface extends Flysystem\AwsS3v3\AwsS3Adapter implements Filesystem\AdapterInterface, base\Configurable
+class Adapter extends Flysystem\AwsS3v3\AwsS3Adapter implements Filesystem\AdapterInterface, base\Configurable
 {
     /** @var array|string|ConfigInterface definition */
     public $config = [
