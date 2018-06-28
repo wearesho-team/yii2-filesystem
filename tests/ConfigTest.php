@@ -8,6 +8,7 @@ use Wearesho\Yii\Filesystem;
 /**
  * Class ConfigTest
  * @package Wearesho\Yii\Filesystem\Tests
+ * @coversDefaultClass \Wearesho\Yii\Filesystem\Config
  */
 class ConfigTest extends TestCase
 {
