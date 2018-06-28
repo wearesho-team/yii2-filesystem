@@ -43,6 +43,7 @@ Available values: *local*, *ftp*, *s3*.
 | FTP_BASE_URL | no       |              | base url will be used to generate URL to files |
 
 ## Usage
+### Bootstrap
 To start use this package out-of-box you need to append [Bootstrap](./src/Bootstrap.php)
 into your Yii2 application.
 ```php
@@ -64,6 +65,22 @@ return [
 ];
 ```
 *Note: for advanced usage you may customize [Bootstrap](./src/Bootstrap.php) adapters and config properties*
+
+### Filesystem Class
+You can also use [Filesystem](./src/Filesystem.php) class for yii2-way configuration:
+```php
+<?php
+
+use Wearesho\Yii\Filesystem\Filesystem;
+use Wearesho\Yii\Filesystem\AdapterInterface;
+
+$fs = new Filesystem([
+    'adapter' => [
+        'class' => AdapterInterface::class, // or another implementation, if container not configured
+    ],
+]);
+
+```
 
 ## TODO
 - Tests
