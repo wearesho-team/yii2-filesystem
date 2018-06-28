@@ -67,9 +67,11 @@ class Bootstrap extends base\BaseObject implements base\BootstrapInterface
     public function bootstrap($app): void
     {
         if (!is_null($this->id)) {
-            /** @var AdapterInterface $adapter */
-            $adapter = di\Instance::ensure($this->getAdapterReference(), AdapterInterface::class);
-            $app->set($this->id, new Filesystem($adapter));
+            /** @noinspection MissedFieldInspection */
+            $app->set($this->id, [
+                'class' => Filesystem::class,
+                'adapter' => $this->getAdapterReference(),
+            ]);
         }
 
         if ($this->container === true) {
@@ -90,10 +92,10 @@ class Bootstrap extends base\BaseObject implements base\BootstrapInterface
     }
 
     /**
-     * @return array
+     * @return array|string
      * @throws base\InvalidConfigException
      */
-    public function getAdapterReference(): array
+    public function getAdapterReference()
     {
         $adapterKey = $this->config->getAdapter();
         if (!array_key_exists($adapterKey, $this->adapters)) {
