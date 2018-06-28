@@ -35,7 +35,7 @@ class Adapter extends Flysystem\Adapter\Local implements Filesystem\AdapterInter
             $root,
             $this->writeFlags,
             self::DISALLOW_LINKS,
-            $this->permissionMap
+            $this->permissionMap ?? []
         );
     }
 
