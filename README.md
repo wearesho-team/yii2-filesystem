@@ -1,4 +1,7 @@
 # Yii2 Filesystem
+[![codecov](https://codecov.io/gh/wearesho-team/yii2-filesystem/branch/master/graph/badge.svg)](https://codecov.io/gh/wearesho-team/yii2-filesystem)
+[![Build Status](https://travis-ci.org/wearesho-team/yii2-filesystem.svg?branch=master)](https://travis-ci.org/wearesho-team/yii2-filesystem)
+
 Integration of [league/flysystem](https://github.com/thephpleague/flysystem) for Yii2.
 
 It is configured by environment variables by default.
