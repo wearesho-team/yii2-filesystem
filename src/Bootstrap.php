@@ -86,8 +86,11 @@ class Bootstrap extends base\BaseObject implements base\BootstrapInterface
     public function configure(di\Container $container): void
     {
         $container->setSingleton(
-            AdapterInterface::class,
-            $this->getAdapterReference()
+            Filesystem::class,
+            [
+                'class' => Filesystem::class,
+                'adapter' => $this->getAdapterReference(),
+            ]
         );
     }
 
