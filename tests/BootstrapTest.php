@@ -69,10 +69,10 @@ class BootstrapTest extends TestCase
         ]);
         $bootstrap->configure($container);
 
-        /** @var Filesystem\Local\Adapter $adapter */
-        $adapter = $container->get(Filesystem\AdapterInterface::class);
-        $this->assertInstanceOf(Filesystem\Local\Adapter::class, $adapter);
-        $this->assertInstanceOf(Filesystem\Local\Config::class, $adapter->config);
+        /** @var Filesystem\Filesystem $fs */
+        $fs = $container->get(Filesystem\Filesystem::class);
+        $this->assertInstanceOf(Filesystem\Local\Adapter::class, $fs->getAdapter());
+        $this->assertInstanceOf(Filesystem\Local\Config::class, $fs->getAdapter()->config);
     }
 
     public function testBootstrap(): void
@@ -106,7 +106,7 @@ class BootstrapTest extends TestCase
         $this->assertInstanceOf(Filesystem\Local\Adapter::class, $fs->getAdapter());
 
         $this->assertTrue(
-            \Yii::$container->has(Filesystem\AdapterInterface::class)
+            \Yii::$container->has(Filesystem\Filesystem::class)
         );
 
 
