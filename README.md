@@ -45,6 +45,28 @@ Available values: *local*, *ftp*, *s3*.
 | FTP_PATH     | no       | empty string | prefix for save path                           |
 | FTP_BASE_URL | no       |              | base url will be used to generate URL to files |
 
+### Configuring Replica adapter
+This adapter purpose of mirroring files on few adapters
+(any [AdapterInterface](./src/AdapterInterface.php) implementation)
+```php
+<?php
+
+use Wearesho\Yii\Filesystem;
+
+$adapter = new Filesystem\Replica\Adapter([
+    'master' => [
+        'class' => Filesystem\S3\Adapter::class,
+    ],
+    'slaves' => [
+        // so much slaves
+        [
+            'class' => Filesystem\Ftp\Adapter::class,
+        ],
+    ],
+]);
+
+```
+
 ## Usage
 ### Bootstrap
 To start use this package out-of-box you need to append [Bootstrap](./src/Bootstrap.php)
