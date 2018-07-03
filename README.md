@@ -1,6 +1,9 @@
 # Yii2 Filesystem
+[![Latest Stable Version](https://poser.pugx.org/wearesho-team/yii2-filesystem/v/stable)](https://packagist.org/packages/wearesho-team/yii2-filesystem)
+[![Total Downloads](https://poser.pugx.org/wearesho-team/yii2-filesystem/downloads)](https://packagist.org/packages/wearesho-team/yii2-filesystem)
 [![codecov](https://codecov.io/gh/wearesho-team/yii2-filesystem/branch/master/graph/badge.svg)](https://codecov.io/gh/wearesho-team/yii2-filesystem)
 [![Build Status](https://travis-ci.org/wearesho-team/yii2-filesystem.svg?branch=master)](https://travis-ci.org/wearesho-team/yii2-filesystem)
+[![License](https://poser.pugx.org/wearesho-team/yii2-filesystem/license)](https://packagist.org/packages/wearesho-team/yii2-filesystem)
 
 Integration of [league/flysystem](https://github.com/thephpleague/flysystem) for Yii2.
 
