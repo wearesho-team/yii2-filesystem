@@ -23,11 +23,8 @@ class Bootstrap extends base\BaseObject implements base\BootstrapInterface
         's3' => [
             'class' => S3\Adapter::class,
             'config' => [
-                'class' => S3\Adapter::class,
-                'config' => [
-                    'class' => S3\EnvironmentConfig::class,
-                    'keyPrefix' => 'S3_',
-                ],
+                'class' => S3\EnvironmentConfig::class,
+                'keyPrefix' => 'S3_',
             ],
         ],
         'ftp' => [
