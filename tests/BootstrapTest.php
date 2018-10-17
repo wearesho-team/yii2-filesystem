@@ -4,6 +4,7 @@ namespace Wearesho\Yii\Filesystem\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Wearesho\Yii\Filesystem;
+use League\Flysystem;
 use yii\di;
 use yii\console;
 
@@ -73,6 +74,22 @@ class BootstrapTest extends TestCase
         $fs = $container->get(Filesystem\Filesystem::class);
         $this->assertInstanceOf(Filesystem\Local\Adapter::class, $fs->getAdapter());
         $this->assertInstanceOf(Filesystem\Local\Config::class, $fs->getAdapter()->config);
+
+        $this->assertTrue(
+            $container->has(Flysystem\Filesystem::class)
+        );
+        $this->assertInstanceOf(
+            Filesystem\Filesystem::class,
+            $container->get(Flysystem\Filesystem::class)
+        );
+
+        $this->assertTrue(
+            $container->has(Flysystem\AdapterInterface::class)
+        );
+        $this->assertInstanceOf(
+            Filesystem\AdapterInterface::class,
+            $container->get(Flysystem\AdapterInterface::class)
+        );
     }
 
     public function testBootstrap(): void
