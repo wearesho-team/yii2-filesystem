@@ -55,7 +55,7 @@ class BootstrapTest extends TestCase
 
     public function testConfiguringContainer(): void
     {
-        $container = new di\Container();
+        \Yii::$container = $container = new di\Container();
         $bootstrap = new Filesystem\Bootstrap([
             'adapters' => [
                 'default' => [
@@ -90,6 +90,7 @@ class BootstrapTest extends TestCase
             Filesystem\AdapterInterface::class,
             $container->get(Flysystem\AdapterInterface::class)
         );
+        \Yii::$container = new di\Container();
     }
 
     public function testBootstrap(): void
