@@ -4,6 +4,7 @@ namespace Wearesho\Yii\Filesystem;
 
 use yii\base;
 use yii\di;
+use League\Flysystem;
 
 /**
  * Class Bootstrap
@@ -82,11 +83,28 @@ class Bootstrap extends base\BaseObject implements base\BootstrapInterface
      */
     public function configure(di\Container $container): void
     {
+        $adapter = $this->getAdapterReference();
+
+        $container->setSingleton(
+            Flysystem\AdapterInterface::class,
+            AdapterInterface::class
+        );
+
+        $container->setSingleton(
+            AdapterInterface::class,
+            $adapter
+        );
+
+        $container->setSingleton(
+            Flysystem\Filesystem::class,
+            Filesystem::class
+        );
+
         $container->setSingleton(
             Filesystem::class,
             [
                 'class' => Filesystem::class,
-                'adapter' => $this->getAdapterReference(),
+                'adapter' => AdapterInterface::class,
             ]
         );
     }
