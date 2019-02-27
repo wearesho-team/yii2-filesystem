@@ -33,6 +33,8 @@ class Filesystem extends Flysystem\Filesystem implements base\Configurable
 
     public function getUrl(string $path): string
     {
-        return rtrim($this->adapter->getBaseUrl(), '/') . '/' . ltrim($path, '/');
+        $encodedPath =  implode("/", array_map("rawurlencode", explode("/", $path)));
+
+        return rtrim($this->adapter->getBaseUrl(), '/') . '/' . ltrim($encodedPath, '/');
     }
 }
