@@ -3,6 +3,7 @@
 namespace Wearesho\Yii\Filesystem\Local;
 
 use yii\base;
+use yii\helpers\Url;
 
 /**
  * Class Config
@@ -31,6 +32,6 @@ class Config extends base\BaseObject implements ConfigInterface
             throw new base\InvalidConfigException("basePath is not configured");
         }
 
-        return \Yii::getAlias($this->baseUrl);
+        return Url::to($this->baseUrl, true);
     }
 }
