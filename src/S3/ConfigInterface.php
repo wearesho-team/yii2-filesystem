@@ -12,11 +12,11 @@ interface ConfigInterface
 
     public function getKey(): ?string;
 
+    public function getRegion(): ?string;
+
     public function getSecret(): ?string;
 
     public function getVersion(): string;
-
-    public function getRegion(): string;
 
     public function getBucket(): string;
 

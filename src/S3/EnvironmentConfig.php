@@ -27,14 +27,14 @@ class EnvironmentConfig extends Environment\Yii2\Config implements ConfigInterfa
         return $this->getEnv('SECRET', [$this, 'null',]);
     }
 
+    public function getRegion(): ?string
+    {
+        return $this->getEnv('REGION', [$this, 'null',]);
+    }
+
     public function getVersion(): string
     {
         return $this->getEnv('VERSION', 'latest');
-    }
-
-    public function getRegion(): string
-    {
-        return $this->getEnv('REGION');
     }
 
     public function getBucket(): string
