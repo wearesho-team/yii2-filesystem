@@ -32,12 +32,16 @@ class Adapter extends Flysystem\AwsS3v3\AwsS3Adapter implements Filesystem\Adapt
 
         $bucket = $this->config->getBucket();
         $prefix = $this->config->getPrefix();
+
+        $key = $this->config->getKey();
+        $secret = $this->config->getSecret();
+        $credentials = is_null($key) || is_null($secret)
+            ? []
+            : compact('key', 'secret');
+
         $client = new S3Client([
             'endpoint' => $this->config->getEndpoint(),
-            'credentials' => [
-                'key' => $this->config->getKey(),
-                'secret' => $this->config->getSecret(),
-            ],
+            'credentials' => $credentials,
             'version' => $this->config->getVersion(),
             'region' => $this->config->getRegion(),
         ]);

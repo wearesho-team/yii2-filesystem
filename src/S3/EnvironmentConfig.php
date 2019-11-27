@@ -17,14 +17,14 @@ class EnvironmentConfig extends Environment\Yii2\Config implements ConfigInterfa
         return $this->getEnv('ENDPOINT');
     }
 
-    public function getKey(): string
+    public function getKey(): ?string
     {
-        return $this->getENv('KEY');
+        return $this->getEnv('KEY', [$this, 'null',]);
     }
 
-    public function getSecret(): string
+    public function getSecret(): ?string
     {
-        return $this->getEnv('SECRET');
+        return $this->getEnv('SECRET', [$this, 'null',]);
     }
 
     public function getVersion(): string

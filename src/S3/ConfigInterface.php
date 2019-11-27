@@ -10,9 +10,9 @@ interface ConfigInterface
 {
     public function getEndpoint(): string;
 
-    public function getKey(): string;
+    public function getKey(): ?string;
 
-    public function getSecret(): string;
+    public function getSecret(): ?string;
 
     public function getVersion(): string;
 
