@@ -10,7 +10,7 @@ use League\Flysystem;
  * Class Filesystem
  * @package Wearesho\Yii\Filesystem
  *
- * @property AdapterInterface $adapter
+ * @property-write AdapterInterface $adapter
  */
 class Filesystem extends Flysystem\Filesystem implements base\Configurable
 {
@@ -29,6 +29,11 @@ class Filesystem extends Flysystem\Filesystem implements base\Configurable
         $adapter = di\Instance::ensure($config['adapter'], AdapterInterface::class);
 
         parent::__construct($adapter, $config['config'] ?? null);
+    }
+
+    public function setAdapter(AdapterInterface $adapter): void
+    {
+        $this->adapter = $adapter;
     }
 
     public function getUrl(string $path): string
