@@ -3,11 +3,11 @@
   "description": "Yii2 integration for league/flysystem",
   "type": "library",
   "require": {
-    "php": ">=7.1",
-    "league/flysystem": "^1.0",
-    "yiisoft/yii2": "^2.0",
+    "php": ">=7.4",
+    "league/flysystem": "^1.1.4",
+    "yiisoft/yii2": "^2.0.40",
     "league/flysystem-aws-s3-v3": "^1.0",
-    "horat1us/yii2-environment-config": "^1.0"
+    "horat1us/yii2-environment-config": "^1.1"
   },
   "autoload": {
     "psr-4": {
@@ -28,12 +28,20 @@
   ],
   "minimum-stability": "stable",
   "require-dev": {
-    "squizlabs/php_codesniffer": "^3.3",
-    "phpunit/phpunit": "^7.2",
-    "mockery/mockery": "0.9.*"
+    "squizlabs/php_codesniffer": "^3.7",
+    "phpunit/phpunit": "^9.5",
+    "mockery/mockery": "^1.5",
+    "horat1us/yii2-asset-free": "^1.0"
   },
   "scripts": {
     "lint": "./vendor/bin/phpcs --standard=PSR2 ./src ./tests",
-    "phpcbf": "./vendor/bin/phpcbf --standard=PSR2 ./src ./tests"
+    "phpcbf": "./vendor/bin/phpcbf --standard=PSR2 ./src ./tests",
+    "cover": "./vendor/bin/phpunit --coverage-clover=coverage.xml",
+    "test": "./vendor/bin/phpunit"
+  },
+  "config": {
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true
+    }
   }
 }

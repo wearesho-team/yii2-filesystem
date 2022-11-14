@@ -1,12 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Wearesho\Yii\Filesystem\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Wearesho\Yii\Filesystem;
 use League\Flysystem;
-use yii\di;
 use yii\console;
+use yii\base;
+use yii\di;
 
 /**
  * Class BootstrapTest
@@ -37,10 +40,6 @@ class BootstrapTest extends TestCase
         $this->assertEquals('AnotherClass', $bootstrap->getAdapterReference());
     }
 
-    /**
-     * @expectedException \yii\base\InvalidConfigException
-     * @expectedExceptionMessage Adapter unknown is not configured
-     */
     public function testNotConfiguredAdapterReference(): void
     {
         $bootstrap = new Filesystem\Bootstrap([
@@ -50,6 +49,10 @@ class BootstrapTest extends TestCase
                 'adapter' => 'unknown',
             ],
         ]);
+
+        $this->expectException(base\InvalidConfigException::class);
+        $this->expectExceptionMessage("Adapter unknown is not configured");
+
         $bootstrap->getAdapterReference();
     }
 

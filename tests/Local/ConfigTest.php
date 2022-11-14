@@ -1,9 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Wearesho\Yii\Filesystem\Tests\Local;
 
 use PHPUnit\Framework\TestCase;
 use Wearesho\Yii\Filesystem;
+use yii\base;
 
 /**
  * Class ConfigTest
@@ -20,12 +23,11 @@ class ConfigTest extends TestCase
         $this->config = new Filesystem\Local\Config();
     }
 
-    /**
-     * @expectedException \yii\base\InvalidConfigException
-     * @expectedExceptionMessage basePath is not configured
-     */
     public function testEmptyBaseUrl(): void
     {
+        $this->expectException(base\InvalidConfigException::class);
+        $this->expectExceptionMessage("basePath is not configured");
+
         $this->config->getBaseUrl();
     }
 

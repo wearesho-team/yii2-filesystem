@@ -6,6 +6,7 @@ namespace Wearesho\Yii\Filesystem\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Wearesho\Yii\Filesystem;
+use yii\base;
 
 /**
  * Class FilesystemTest
@@ -31,12 +32,10 @@ class FilesystemTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \yii\base\InvalidConfigException
-     * @expectedExceptionMessage Adapter have to specified in config
-     */
     public function testMissingAdapter(): void
     {
+        $this->expectException(base\InvalidConfigException::class);
+        $this->expectExceptionMessage("Adapter have to specified in config");
         new Filesystem\Filesystem([]);
     }
 

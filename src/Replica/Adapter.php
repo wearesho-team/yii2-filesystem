@@ -276,6 +276,13 @@ class Adapter extends base\BaseObject implements Filesystem\AdapterInterface
         }
         $stream = $this->master->readStream($path);
 
-        return $stream ? $stream['stream'] : false;
+        // ensure safety. disabled tests was broken without this code
+        if (is_resource($stream)) {
+            return $stream;
+        }
+        if (is_array($stream) && array_key_exists('stream', $stream)) {
+            return $stream['stream'];
+        }
+        return false;
     }
 }
