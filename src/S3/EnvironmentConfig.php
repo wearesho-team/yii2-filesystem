@@ -17,38 +17,14 @@ class EnvironmentConfig extends Environment\Yii2\Config implements ConfigInterfa
         return $this->getEnv('ENDPOINT');
     }
 
-    public function getKey(): ?string
-    {
-        return $this->getEnv('KEY', [$this, 'null',]);
-    }
-
-    public function getSecret(): ?string
-    {
-        return $this->getEnv('SECRET', [$this, 'null',]);
-    }
-
     public function getRegion(): ?string
     {
         return $this->getEnv('REGION', [$this, 'null',]);
     }
 
-    public function getVersion(): string
-    {
-        return $this->getEnv('VERSION', 'latest');
-    }
-
     public function getBucket(): string
     {
         return $this->getEnv('BUCKET');
-    }
-
-    /**
-     * @return string
-     * @todo: implement default value using bucket, endpoint methods
-     */
-    public function getBaseUrl(): string
-    {
-        return $this->getEnv('BASE_URL');
     }
 
     public function getPrefix(): string
