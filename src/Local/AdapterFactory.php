@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Wearesho\Yii\Filesystem\Local;
 
 use Wearesho\Yii\Filesystem\AdapterFactoryInterface;
-use League\Flysystem\Local\LocalFilesystemAdapter;
 use League\Flysystem\FilesystemAdapter;
 use yii\base\InvalidConfigException;
 use yii\base;
@@ -17,7 +16,11 @@ class AdapterFactory extends base\BaseObject implements AdapterFactoryInterface
 
     public function create(): FilesystemAdapter
     {
-        return new LocalFilesystemAdapter($this->getConfig()->getSavePath());
+        $config = $this->getConfig();
+        return new Adapter(
+            location: $config->getSavePath(),
+            publicPathPrefix: $config->getPublicPathPrefix(),
+        );
     }
 
     /**

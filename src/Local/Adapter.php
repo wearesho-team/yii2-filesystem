@@ -24,8 +24,10 @@ class Adapter extends LocalFilesystemAdapter implements TemporaryUrlGenerator, P
         ?MimeTypeDetector    $mimeTypeDetector = null,
         bool                 $lazyRootCreation = false,
         bool                 $useInconclusiveMimeTypeFallback = false,
-        ?UrlManager          $urlManager = null
-    ) {
+        ?UrlManager          $urlManager = null,
+        private string       $publicPathPrefix = ''
+    )
+    {
         parent::__construct(
             $location,
             $visibility,
@@ -40,11 +42,18 @@ class Adapter extends LocalFilesystemAdapter implements TemporaryUrlGenerator, P
 
     public function publicUrl(string $path, Config $config): string
     {
-        return $this->urlManager->createAbsoluteUrl('') . $path;
+        return $this->getPublicUrl($path);
     }
 
     public function temporaryUrl(string $path, \DateTimeInterface $expiresAt, Config $config): string
     {
-        return $this->urlManager->createAbsoluteUrl('') . $path;
+        return $this->getPublicUrl($path);
+    }
+
+    private function getPublicUrl(string $path): string
+    {
+        return rtrim($this->urlManager->createAbsoluteUrl(''), '/')
+            . '/' . rtrim(ltrim($this->publicPathPrefix, '/'), '/')
+            . '/' . ltrim($path, '/');
     }
 }

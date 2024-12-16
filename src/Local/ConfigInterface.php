@@ -7,4 +7,6 @@ namespace Wearesho\Yii\Filesystem\Local;
 interface ConfigInterface
 {
     public function getSavePath(): string;
+
+    public function getPublicPathPrefix(): ?string;
 }

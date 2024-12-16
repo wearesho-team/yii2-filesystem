@@ -14,4 +14,9 @@ class EnvironmentConfig extends Environment\Yii2\Config implements ConfigInterfa
     {
         return $this->getEnv('SAVE_PATH');
     }
+
+    public function getPublicPathPrefix(): ?string
+    {
+        return $this->getEnv('PUBLIC_PREFIX');
+    }
 }
