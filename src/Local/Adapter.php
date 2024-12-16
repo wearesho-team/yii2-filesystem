@@ -1,46 +1,50 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Wearesho\Yii\Filesystem\Local;
 
-use yii\base;
-use yii\di;
-use Wearesho\Yii\Filesystem;
-use League\Flysystem;
+use League\Flysystem\UrlGeneration\TemporaryUrlGenerator;
+use League\Flysystem\UnixVisibility\VisibilityConverter;
+use League\Flysystem\UrlGeneration\PublicUrlGenerator;
+use League\Flysystem\Local\LocalFilesystemAdapter;
+use League\MimeTypeDetection\MimeTypeDetector;
+use League\Flysystem\Config;
+use yii\web\UrlManager;
 
-/**
- * Class Adapter
- * @package Wearesho\Yii\Filesystem\Local
- */
-class Adapter extends Flysystem\Adapter\Local implements Filesystem\AdapterInterface, base\Configurable
+class Adapter extends LocalFilesystemAdapter implements TemporaryUrlGenerator, PublicUrlGenerator
 {
-    /** @var array|string|ConfigInterface definition */
-    public $config = [
-        'class' => EnvironmentConfig::class,
-    ];
+    private UrlManager $urlManager;
 
-    /**
-     * Adapter constructor.
-     * @param array $config
-     * @throws base\InvalidConfigException
-     */
     public function __construct(
-        array $config = []
+        string               $location,
+        ?VisibilityConverter $visibility = null,
+        int                  $writeFlags = LOCK_EX,
+        int                  $linkHandling = self::DISALLOW_LINKS,
+        ?MimeTypeDetector    $mimeTypeDetector = null,
+        bool                 $lazyRootCreation = false,
+        bool                 $useInconclusiveMimeTypeFallback = false,
+        ?UrlManager          $urlManager = null
     ) {
-        \Yii::configure($this, $config);
-        $this->config = di\Instance::ensure($this->config, ConfigInterface::class);
-
-        $root = $this->config->getSavePath();
-
         parent::__construct(
-            $root,
-            $this->writeFlags,
-            self::DISALLOW_LINKS,
-            $this->permissionMap ?? []
+            $location,
+            $visibility,
+            $writeFlags,
+            $linkHandling,
+            $mimeTypeDetector,
+            $lazyRootCreation,
+            $useInconclusiveMimeTypeFallback
         );
+        $this->urlManager = is_null($urlManager) ? \Yii::$app->urlManager : $urlManager;
     }
 
-    public function getBaseUrl(): string
+    public function publicUrl(string $path, Config $config): string
     {
-        return $this->config->getBaseUrl();
+        return $this->urlManager->createAbsoluteUrl('') . $path;
+    }
+
+    public function temporaryUrl(string $path, \DateTimeInterface $expiresAt, Config $config): string
+    {
+        return $this->urlManager->createAbsoluteUrl('') . $path;
     }
 }

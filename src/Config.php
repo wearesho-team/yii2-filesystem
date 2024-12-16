@@ -1,17 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Wearesho\Yii\Filesystem;
 
-use yii\base;
-
-/**
- * Class Config
- * @package Wearesho\Yii\Filesystem
- */
-class Config extends base\BaseObject implements ConfigInterface
+class Config implements ConfigInterface
 {
-    /** @var string */
-    public $adapter = 's3';
+    public function __construct(public string $adapter = 'local')
+    {
+    }
 
     public function getAdapter(): string
     {

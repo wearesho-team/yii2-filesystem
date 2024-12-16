@@ -10,17 +10,9 @@ interface ConfigInterface
 {
     public function getEndpoint(): string;
 
-    public function getKey(): ?string;
-
     public function getRegion(): ?string;
 
-    public function getSecret(): ?string;
-
-    public function getVersion(): string;
-
     public function getBucket(): string;
-
-    public function getBaseUrl(): string;
 
     public function getPrefix(): string;
 }

@@ -3,11 +3,11 @@
   "description": "Yii2 integration for league/flysystem",
   "type": "library",
   "require": {
-    "php": ">=7.4",
-    "league/flysystem": "^1.1.4",
-    "yiisoft/yii2": "^2.0.40",
-    "league/flysystem-aws-s3-v3": "^1.0",
-    "horat1us/yii2-environment-config": "^1.1"
+    "php": ">=8.1",
+    "horat1us/yii2-environment-config": "^1.1",
+    "league/flysystem": "^3.29",
+    "league/flysystem-aws-s3-v3": "^3.23",
+    "yiisoft/yii2": "^2.0.40"
   },
   "autoload": {
     "psr-4": {
@@ -43,7 +43,7 @@
     "process-timeout": 1800,
     "sort-packages": true,
     "platform": {
-      "php": "7.4"
+      "php": "8.1"
     },
     "allow-plugins": {
       "yiisoft/yii2-composer": true
