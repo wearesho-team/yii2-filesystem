@@ -33,14 +33,14 @@ class Service
     /**
      * Export files to a ZIP archive
      *
-     * @param array $filePaths Array with keys as output filenames and values as source paths
+     * @param iterable $filePaths Array with keys as output filenames and values as source paths
      * @param string $outputZipPath Path where the ZIP file will be saved
      * @param string $tempDir Directory to create and write files during export process
      * @param int $maxRetries Maximum retries amount during files export
      * @return bool Success status
      */
     public function exportToZip(
-        array $filePaths,
+        iterable $filePaths,
         string $outputZipPath,
         string $tempDir = '/tmp/exports',
         int $maxRetries = 3
