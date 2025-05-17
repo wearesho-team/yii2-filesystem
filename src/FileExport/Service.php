@@ -50,7 +50,7 @@ class Service
         $this->zipFilePath = $outputZipPath;
         $this->logEntries = [];
         $this->addLogEntry("Export started at " . date('Y-m-d H:i:s'));
-        $this->addLogEntry("Total files to export: " . is_array($filePaths) ? count($filePaths) : "unknown");
+        $this->addLogEntry("Total files to export: " . (is_array($filePaths) ? count($filePaths) : "unknown"));
 
         $zip = new ZipArchive();
         if ($zip->open($outputZipPath, ZipArchive::CREATE | ZipArchive::OVERWRITE) !== true) {
