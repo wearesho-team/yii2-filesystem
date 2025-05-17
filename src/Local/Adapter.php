@@ -17,17 +17,16 @@ class Adapter extends LocalFilesystemAdapter implements TemporaryUrlGenerator, P
     private UrlManager $urlManager;
 
     public function __construct(
-        string               $location,
+        string $location,
         ?VisibilityConverter $visibility = null,
-        int                  $writeFlags = LOCK_EX,
-        int                  $linkHandling = self::DISALLOW_LINKS,
-        ?MimeTypeDetector    $mimeTypeDetector = null,
-        bool                 $lazyRootCreation = false,
-        bool                 $useInconclusiveMimeTypeFallback = false,
-        ?UrlManager          $urlManager = null,
-        private string       $publicPathPrefix = ''
-    )
-    {
+        int $writeFlags = LOCK_EX,
+        int $linkHandling = self::DISALLOW_LINKS,
+        ?MimeTypeDetector $mimeTypeDetector = null,
+        bool $lazyRootCreation = false,
+        bool $useInconclusiveMimeTypeFallback = false,
+        ?UrlManager $urlManager = null,
+        private string $publicPathPrefix = ''
+    ) {
         parent::__construct(
             $location,
             $visibility,

@@ -3,7 +3,8 @@
   "description": "Yii2 integration for league/flysystem",
   "type": "library",
   "require": {
-    "php": ">=8.1",
+    "php": ">=8.4",
+    "ext-zip": "*",
     "horat1us/yii2-environment-config": "^1.1",
     "league/flysystem": "^3.29",
     "league/flysystem-aws-s3-v3": "^3.23",
@@ -28,14 +29,14 @@
   ],
   "minimum-stability": "stable",
   "require-dev": {
-    "squizlabs/php_codesniffer": "^3.7",
-    "phpunit/phpunit": "^9.5",
+    "horat1us/yii2-asset-free": "^1.0",
     "mockery/mockery": "^1.5",
-    "horat1us/yii2-asset-free": "^1.0"
+    "phpunit/phpunit": "^9.5",
+    "squizlabs/php_codesniffer": "^3.13"
   },
   "scripts": {
-    "lint": "./vendor/bin/phpcs --standard=PSR2 ./src ./tests",
-    "phpcbf": "./vendor/bin/phpcbf --standard=PSR2 ./src ./tests",
+    "lint": "./vendor/bin/phpcs --standard=PSR12 ./src ./tests",
+    "phpcbf": "./vendor/bin/phpcbf --standard=PSR12 ./src ./tests",
     "cover": "./vendor/bin/phpunit --coverage-clover=coverage.xml",
     "test": "./vendor/bin/phpunit"
   },
@@ -43,7 +44,7 @@
     "process-timeout": 1800,
     "sort-packages": true,
     "platform": {
-      "php": "8.1"
+      "php": "8.4"
     },
     "allow-plugins": {
       "yiisoft/yii2-composer": true

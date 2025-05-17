@@ -32,7 +32,6 @@ Available values: *local*, *s3*.
 | -------------------------- | -------- | ------- | ---------------------------------------------- |
 | FILESYSTEM_LOCAL_SAVE_PATH | yes      |         | path to save file on local machine             |
 
-
 ## Usage
 ### Bootstrap
 To start use this package out-of-box you need to append [Bootstrap](./src/Bootstrap.php)
@@ -56,7 +55,6 @@ return [
 ];
 ```
 *Note: for advanced usage you may customize [Bootstrap](./src/Bootstrap.php) adapters and config properties*
-
 
 ## TODO
 - Tests
