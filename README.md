@@ -12,6 +12,8 @@ Available integration out-of-box:
 - [Local](./src/Local) - should be used for development
 - [S3](./src/S3) - should be used in production
 
+Compatibility: tested on PHP 8.4, PHP 8.5
+
 ## Configuring
 By-default configuring available using environment variables.
 To choose which integration to use you need to configure 
@@ -31,6 +33,7 @@ Available values: *local*, *s3*.
 | Variable                   | Required | Default | Description                                    |
 | -------------------------- | -------- | ------- | ---------------------------------------------- |
 | FILESYSTEM_LOCAL_SAVE_PATH | yes      |         | path to save file on local machine             |
+| FILESYSTEM_LOCAL_PUBLIC_PREFIX | yes  |         | path prefix of public and temporary file URLs  |
 
 ## Usage
 ### Bootstrap

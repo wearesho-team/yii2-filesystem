@@ -8,3 +8,4 @@
 /docker-compose.yml export-ignore
 /docs export-ignore
 /examples export-ignore
+/phpcs.xml export-ignore
